@@ -1,6 +1,4 @@
-// node_modules.
 import "./config/env.js";
-// Mine
 import express from "express";
 import router from "./routes/router.js";
 
