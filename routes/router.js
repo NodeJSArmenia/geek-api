@@ -1,7 +1,7 @@
 import express from "express";
-import listRouter from "./list.router.js";
+import geeksRouter from "./geeks.router.js";
 
 const router = express();
-router.use(listRouter);
+router.use(geeksRouter);
 
 export default router;

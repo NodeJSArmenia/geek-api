@@ -1,42 +1,44 @@
-import "../config/env.js";
-import airtable from "airtable";
-airtable.configure({
-  apiKey: process.env.AIRTABLE_API_KEY,
-  endpointUrl: "https://api.airtable.com",
-});
-const base = airtable.base("appsHMdNO7YjRsb8V");
+import { base } from "../config/env.js";
 
 const table = base("tblv5RDJcHsiFaBkn");
+let geeksData;
 
-const getRecords = async () => {
+const getGeeks = async () => {
   try {
-    const records = await table.select().firstPage();
-    const minifyRecords = records.map((record) => minifyRecord(record));
-    return minifyRecords;
+    const geeks = await table.select().firstPage();
+    const minifyGeeks = geeks.map((geek) => minifyGeek(geek));
+    return minifyGeeks;
   } catch (err) {
     console.error(err);
   }
 };
 
-const getRecordById = async (id) => {
+const getGeekById = async (id) => {
   try {
-    const record = await table.find(id);
-    return minifyRecord(record);
+    const geek = await table.find(id);
+    return minifyGeek(geek);
   } catch (err) {
     console.error(err);
   }
 };
 
-const minifyRecord = (record) => {
+const minifyGeek = (geek) => {
+  const { id, fields } = geek;
   return {
-    id: record.id,
-    fieds: record.fields,
-    createdTime: record.createdTime,
+    id,
+    fields,
   };
 };
 
+const upDateGeeks = async (geeks) => {
+  const upDatedGeeks = await table.replace(geeks);
+  console.log(upDatedGeeks);
+};
+
 export default {
-  getRecords,
-  getRecordById,
-  minifyRecord,
+  getGeeks,
+  getGeekById,
+  minifyGeek,
+  upDateGeeks,
+  geeksData,
 };
