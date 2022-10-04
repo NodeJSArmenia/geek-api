@@ -6,10 +6,8 @@ let geeksData;
 const getGeeks = async () => {
   try {
     const geeks = await table.select().firstPage();
-    const minifyedGeeks = geeks.map((geek) => {
-      return minifyGeek(geek);
-    });
-    return minifyedGeeks;
+    const minifyedGeeks = geeks.map((geek) => minifyGeek(geek));
+    return await Promise.all(minifyedGeeks);
   } catch (err) {
     console.error(err);
   }
