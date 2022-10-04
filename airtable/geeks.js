@@ -1,9 +1,10 @@
 import { base } from "../config/env.js";
 
+// create env config
 const table = base("tblv5RDJcHsiFaBkn");
 let geeksData;
 
-const getGeeks = async () => {
+async function loadGeeks() {
   try {
     const geeks = await table.select().firstPage();
     const minifyedGeeks = geeks.map((geek) => minifyGeek(geek));
@@ -11,18 +12,9 @@ const getGeeks = async () => {
   } catch (err) {
     console.error(err);
   }
-};
+}
 
-const getGeekById = async (id) => {
-  try {
-    const geek = await table.find(id);
-    return minifyGeek(geek);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const minifyGeek = async (geek) => {
+function mapGeeks() {
   const {
     fields: { Keywords, Name, Websites },
   } = geek;
@@ -32,19 +24,4 @@ const minifyGeek = async (geek) => {
     name: Name,
     websites: await getGeekWebsites(Websites),
   };
-};
-
-const getGeekWebsites = async (id) => {
-  if (!id) return;
-  const { fields } = await table.find(id);
-  delete fields.Geeks;
-  delete fields.title;
-  return fields;
-};
-
-export default {
-  getGeeks,
-  getGeekById,
-  minifyGeek,
-  geeksData,
-};
+}
