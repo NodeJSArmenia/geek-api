@@ -1,24 +1,18 @@
-import "./config/env.js";
-import { syncInterval, port } from "./config/env.js";
 import express from "express";
+import config from "./config/config.js";
 import router from "./routes/router.js";
-import airtable from "./airtable/airtable.js";
+import store from "./store/store.js";
 
 const app = express();
 app.use(express.json());
 app.use(router);
-let i = 0;
-setInterval(() => {
-  airtable.sync();
-  i++;
-  console.log(i);
-}, syncInterval);
+
+setInterval(store.sync, config.appConfig.syncInterval);
 
 (async () => {
-  await airtable.read();
-  let i = 0;
+  await store.sync();
 
-  app.listen(port, () => {
-    console.log(`Server has been listened on port ${port}`);
+  app.listen(config.appConfig.port, () => {
+    console.log(`Server has been listened on port ${config.appConfig.port}`);
   });
 })();

@@ -1,4 +1,4 @@
-import client from "./client.js";
+import geek from "../geeks/geek.js";
 
 class Airtable {
   constructor() {
@@ -16,8 +16,8 @@ class Airtable {
     // update this.state
 
     try {
-      this.state.geeks = await client.getMapedData();
-      console.log("changed", this.state.geeks);
+      //   this.state.geeks = await client.getMapedData();
+      this.state.geeks = await geek.getGeeks();
     } catch (err) {
       console.error(err);
     }
@@ -25,8 +25,7 @@ class Airtable {
 
   async sync() {
     try {
-      this.state.geeks = await client.syncGeeks();
-      console.log();
+      //   this.state.geeks = await client.syncGeeks();
     } catch (err) {
       console.error(err);
     }
