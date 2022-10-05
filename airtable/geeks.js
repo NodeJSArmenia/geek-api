@@ -2,7 +2,6 @@ import { base } from "../config/env.js";
 
 // create env config
 const table = base("tblv5RDJcHsiFaBkn");
-let geeksData;
 
 async function loadGeeks() {
   try {
@@ -14,7 +13,7 @@ async function loadGeeks() {
   }
 }
 
-function mapGeeks() {
+async function mapGeeks() {
   const {
     fields: { Keywords, Name, Websites },
   } = geek;

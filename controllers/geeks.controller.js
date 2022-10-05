@@ -1,4 +1,4 @@
-import airtable from "../airtable/client.js";
+import airtable from "../airtable/airtable.js";
 
 const getGeeks = async (req, res) => {
   res.json(airtable.geeksData);

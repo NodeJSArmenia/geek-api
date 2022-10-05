@@ -1,8 +1,7 @@
 import "./config/env.js";
 import express from "express";
 import router from "./routes/router.js";
-import loadGeeks from "./airtable/load.geeks.js";
-import upDateGeeks from "./airtable/update.geeks.js";
+import airtable from "./airtable/airtable.js";
 
 const app = express();
 app.use(express.json());
@@ -19,6 +18,3 @@ setInterval(airtable.sync, config.syncInterval);
     console.log(`Server has been listened on port ${port}`);
   });
 })();
-
-
-
