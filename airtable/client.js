@@ -1,13 +1,14 @@
-async function getMapedData(table, mapData) {
+import { getTableByToken } from "../lib/airtable.js";
+
+async function getData(token) {
   try {
-    const data = await table.select().firstPage();
-    const mapedData = data.map((item) => mapData(item));
-    return await Promise.all(mapedData);
+    const table = await getTableByToken(token);
+    return await table.select().firstPage();
   } catch (err) {
     console.error(err);
   }
 }
 
 export default {
-  getMapedData,
+  getData,
 };

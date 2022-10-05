@@ -7,10 +7,11 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-setInterval(store.sync, config.appConfig.syncInterval);
+// setInterval(store.sync, config.appConfig.syncInterval);
 
 (async () => {
-  await store.sync();
+  // await store.sync();
+  await store.read();
 
   app.listen(config.appConfig.port, () => {
     console.log(`Server has been listened on port ${config.appConfig.port}`);

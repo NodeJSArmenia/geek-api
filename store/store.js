@@ -16,8 +16,7 @@ class Airtable {
     // update this.state
 
     try {
-      //   this.state.geeks = await client.getMapedData();
-      this.state.geeks = await geek.getGeeks();
+      // this.state.geeks = await geek.getGeeks();
     } catch (err) {
       console.error(err);
     }
@@ -25,7 +24,7 @@ class Airtable {
 
   async sync() {
     try {
-      //   this.state.geeks = await client.syncGeeks();
+      // ...
     } catch (err) {
       console.error(err);
     }

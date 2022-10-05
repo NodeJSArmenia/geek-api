@@ -9,27 +9,14 @@ airtable.configure({
   endpointUrl: "https://api.airtable.com",
 });
 
-// AirTable Tokens.
-// Base.
-const base = airtable.base(process.env.AIRTABLE_BASE_TOKEN);
-// Table.
-const airtable_geeks_token = process.env.AIRTABLE_GEEKS_TOKEN;
-
-// App Configuration.
-
-// Updating during Each Second.
-const syncInterval = 1000;
-const syncIntervalCount = 3;
-const port = process.env.GEEKS_PORT || 3000;
-
 export default {
   airtableConfig: {
-    base,
-    airtable_geeks_token,
+    base: process.env.AIRTABLE_BASE_TOKEN,
+    airtable_geeks_token: process.env.AIRTABLE_GEEKS_TOKEN,
   },
   appConfig: {
-    port,
-    syncInterval,
-    syncIntervalCount,
+    port: process.env.GEEKS_PORT || 3000,
+    syncInterval: 1000,
+    syncIntervalCount: 3,
   },
 };
