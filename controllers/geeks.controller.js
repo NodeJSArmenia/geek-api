@@ -1,7 +1,7 @@
 import airtable from "../airtable/airtable.js";
 
 const getGeeks = async (req, res) => {
-  res.json(airtable.geeksData);
+  res.json(airtable.state.geeks);
 };
 
 const getGeek = async (req, res) => {

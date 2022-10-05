@@ -8,4 +8,7 @@ airtable.configure({
 });
 
 export const base = airtable.base("appsHMdNO7YjRsb8V");
+export const syncInterval = 1000;
+export const syncIntervalCount = 3;
+export const port = 4000 || 3000;
 export default dotenv;

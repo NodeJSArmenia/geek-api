@@ -1,9 +1,11 @@
+import client from "./client.js";
+
 class Airtable {
   constructor() {
     this.state = {
       geeks: [],
       communities: [],
-    }
+    };
   }
 
   async read() {
@@ -13,24 +15,20 @@ class Airtable {
 
     // update this.state
 
-    return this.state;
+    try {
+      this.state.geeks = await client.getMapedData();
+      console.log("changed", this.state.geeks);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-  async sync(retry=0) {
-    // move 3 to config file
-    if (retry > 3) {
-      return this.state;
-    }
-    // this should never return an error
-
-    // update geeks
-    // update communities
-
+  async sync() {
     try {
-      // ..
-    } catch(err) {
-      retry++;
-      return this.sync(retry);
+      this.state.geeks = await client.syncGeeks();
+      console.log();
+    } catch (err) {
+      console.error(err);
     }
   }
 }
