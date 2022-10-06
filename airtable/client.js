@@ -1,6 +1,6 @@
 import { getTableByToken } from "../lib/airtable.js";
 
-async function getData(token) {
+async function getTableByName(token) {
   try {
     const table = await getTableByToken(token);
     return await table.select().firstPage();
@@ -10,5 +10,5 @@ async function getData(token) {
 }
 
 export default {
-  getData,
+  getTableByName,
 };

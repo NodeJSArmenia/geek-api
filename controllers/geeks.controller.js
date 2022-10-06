@@ -1,7 +1,8 @@
 import store from "../store/store.js";
 
 const getGeeks = async (req, res) => {
-  res.json(store.state.geeks);
+  const [geeks] = store.geeks;
+  res.json(geeks);
 };
 
 const getGeek = async (req, res) => {
