@@ -6,9 +6,9 @@ const { airtable_geeks_token } = config.airtableConfig;
 
 const getGeeks = async () => {
   const data = await client.getTableByName(airtable_geeks_token);
-  const mapedData = data.map(async (item) => {
+  const mapedData = data.map((item) => {
     const { Websites } = item.fields;
-    const website = await getGeekWebsites(Websites);
+    const website = getGeekWebsites(Websites);
     return mapGeeks(item.fields, website);
   });
   console.log(await Promise.all(mapedData), "Maped Data"); // EveryThing is Ok here.
