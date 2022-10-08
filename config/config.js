@@ -13,6 +13,7 @@ export default {
   airtableConfig: {
     base: process.env.AIRTABLE_BASE_TOKEN,
     airtable_geeks_token: process.env.AIRTABLE_GEEKS_TOKEN,
+    airtable_groups_token: process.env.AIRTABLE_GROUPS_TOKEN,
   },
   appConfig: {
     port: process.env.GEEKS_PORT || 3000,

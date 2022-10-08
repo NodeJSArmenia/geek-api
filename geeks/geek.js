@@ -16,7 +16,7 @@ const getGeeks = async () => {
   return mapedData;
 };
 
-export function mapGeeks(geek, website) {
+function mapGeeks(geek, website) {
   const { Hashtags, Name, Avatar } = geek;
 
   return {

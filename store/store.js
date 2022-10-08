@@ -1,20 +1,21 @@
 import geek from "../geeks/geek.js";
+import group from "../groups/group.js";
 
 // State.
 let geeks = [];
-let communites = [];
+let groups = [];
 
 function getState() {
   return {
     geeks,
-    communites,
+    groups,
   };
 }
 
 async function sync() {
   try {
-    // geeks.push(await geek.getGeeks());
-    geeks = await geek.getGeeks(); // Վերագրելուց չի հասցնում փոխի արժեքը․
+    groups = await group.getGroups();
+    geeks = await geek.getGeeks();
   } catch (err) {
     console.error(err);
   }
