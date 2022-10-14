@@ -1,19 +1,19 @@
 import config from "../config/config.js";
 import client from "../airtable/client.js";
-import { getAvatar, getGeekWebsites } from "../lib/airtable.js";
+import { getImage, getGeekWebsites } from "../lib/airtable.js";
 
 const { airtable_geeks_token } = config.airtableConfig;
 
 const getGeeks = async () => {
-  const data = await client.getTableByName(airtable_geeks_token);
-  const mapedData = await Promise.all(
-    data.map(async (item) => {
+  const geeks = await client.getTableByName(airtable_geeks_token);
+  const mapedGeeks = await Promise.all(
+    geeks.map(async (item) => {
       const { Websites } = item.fields;
       const website = await getGeekWebsites(Websites);
       return mapGeeks(item.fields, website);
     })
   );
-  return mapedData;
+  return mapedGeeks;
 };
 
 function mapGeeks(geek, website) {
@@ -22,7 +22,7 @@ function mapGeeks(geek, website) {
   return {
     name: Name,
     hashtags: Hashtags || null,
-    avatar: getAvatar(Avatar) || null,
+    avatar: getImage(Avatar) || null,
     websites: website || null,
   };
 }
