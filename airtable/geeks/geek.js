@@ -1,6 +1,6 @@
-import config from "../config/config.js";
-import client from "../airtable/client.js";
-import { getImage, getGeekWebsites } from "../lib/airtable.js";
+import config from "../../config/config.js";
+import client from "../client.js";
+import { getImage, getGeekWebsites } from "../../lib/airtable.js";
 
 const { airtable_geeks_token } = config.airtableConfig;
 
