@@ -1,12 +1,12 @@
 import geek from "../airtable/geeks/geek.js";
-import group from "../airtable/groups/group.js";
+import telegramGroup from "../airtable/telegram-groups/telegram.group.js";
 import book from "../airtable/books/book.js";
 import podcast from "../airtable/podcasts/podcast.js";
 import blog from "../airtable/blogs/blog.js";
 
 // State.
 let geeks = [];
-let groups = [];
+let telegramGroups = [];
 let books = [];
 let podcasts = [];
 let blogs = [];
@@ -14,7 +14,7 @@ let blogs = [];
 function getState() {
   return {
     geeks,
-    groups,
+    telegramGroups,
     books,
     podcasts,
     blogs,
@@ -23,7 +23,7 @@ function getState() {
 
 async function sync() {
   try {
-    groups = await group.getGroups();
+    telegramGroups = await telegramGroup.getTelegramGroups();
     geeks = await geek.getGeeks();
     books = await book.getBooks();
     podcasts = await podcast.getPodcasts();

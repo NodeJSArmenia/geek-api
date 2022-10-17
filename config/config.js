@@ -13,7 +13,7 @@ export default {
   airtableConfig: {
     base: process.env.AIRTABLE_BASE_TOKEN,
     airtable_geeks_token: process.env.AIRTABLE_GEEKS_TOKEN,
-    airtable_groups_token: process.env.AIRTABLE_GROUPS_TOKEN,
+    airtable_telegram_groups_token: process.env.AIRTABLE_TELEGRAM_GROUPS_TOKEN,
     airtable_books_token: process.env.AIRTABLE_BOOKS_TOKEN,
     airtable_podcasts_token: process.env.AIRTABLE_PODCASTS_TOKEN,
     airtable_blogs_token: process.env.AIRTABLE_BLOGS_TOKEN,
