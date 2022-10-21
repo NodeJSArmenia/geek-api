@@ -10,9 +10,9 @@ npm run start
 
 ## Endpoints
 ```
-Get "/geeks"
-Get "/telegram-groups"
-Get "/books"
-Get "/blogs"
-Get "/podcasts"
+GET "/geeks"
+GET "/telegram-groups"
+GET "/books"
+GET "/blogs"
+GET "/podcasts"
 ```
