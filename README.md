@@ -1,6 +1,6 @@
 ## Endpoints
 Get 
-```"/geeks"
+```"/geeks"```
 Get "/telegram-groups"
 Get "/books"
 Get "/blogs"
