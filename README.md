@@ -1,4 +1,4 @@
-# Endpoints
+## Endpoints
 Get "/geeks"
 Get "/telegram-groups"
 Get "/books"
