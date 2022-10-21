@@ -1,3 +1,8 @@
+## Project Setup
+```
+npm install
+```
+
 ## Endpoints
 ```
 Get "/geeks"
