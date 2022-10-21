@@ -3,6 +3,11 @@
 npm install
 ```
 
+## Run Project
+```
+npm run start
+```
+
 ## Endpoints
 ```
 Get "/geeks"
