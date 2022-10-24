@@ -18,6 +18,6 @@ setInterval(store.sync, appConfig.syncInterval);
   await store.sync();
 
   app.listen(port, () => {
-    console.log(`Server has been listened on port ${config.appConfig.port}`);
+    console.log(`Server has been listened on port ${port}`);
   });
 })();
