@@ -4,15 +4,20 @@ import router from "./routes/router.js";
 import store from "./store/store.js";
 
 const app = express();
+// MiddleWares.
 app.use(express.json());
 app.use(router);
 
-setInterval(store.sync, config.appConfig.syncInterval);
+// App Configuration
+const { appConfig } = config;
+const port = process.env.GEEKS_PORT || 3001;
+
+setInterval(store.sync, appConfig.syncInterval);
 
 (async () => {
   await store.sync();
 
-  app.listen(config.appConfig.port, () => {
+  app.listen(port, () => {
     console.log(`Server has been listened on port ${config.appConfig.port}`);
   });
 })();
