@@ -10,7 +10,7 @@ app.use(router);
 
 // App Configuration
 const { appConfig } = config;
-const port = process.env.GEEKS_PORT || 3001;
+const port = 3001;
 
 setInterval(store.sync, appConfig.syncInterval);
 
