@@ -22,5 +22,6 @@ export default {
     port: process.env.GEEKS_PORT || 4000,
     syncInterval: 1000,
     syncIntervalCount: 3,
+    origin: process.env.ORIGIN,
   },
 };
