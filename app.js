@@ -7,7 +7,7 @@ import store from "./store/store.js";
 const { appConfig } = config;
 const app = express();
 // MiddleWares.
-app.use(cors({ origin: appConfig.origin }));
+app.use(cors({ origin: "https://geek-api.onrender.com" }));
 app.use(express.json());
 app.use(router);
 
