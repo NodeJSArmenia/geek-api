@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import airtable from "airtable";
 
 // AirTable Configuration.
