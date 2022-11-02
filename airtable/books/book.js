@@ -5,13 +5,17 @@ import { getImage, getFile } from "../../lib/airtable.js";
 const { airtable_books_token } = config.airtableConfig;
 
 const getBooks = async () => {
-  const books = await client.getTableByName(airtable_books_token);
-  const mapedBooks = Promise.all(
-    books.map(async (item) => {
-      return mapBooks(item.fields);
-    })
-  );
-  return mapedBooks;
+  try {
+    const books = await client.getTableByName(airtable_books_token);
+    const mapedBooks = Promise.all(
+      books.map(async (item) => {
+        return mapBooks(item.fields);
+      })
+    );
+    return mapedBooks;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 function mapBooks(book) {

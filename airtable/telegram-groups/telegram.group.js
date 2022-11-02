@@ -5,10 +5,17 @@ import { getImage } from "../../lib/airtable.js";
 const { airtable_telegram_groups_token } = config.airtableConfig;
 
 const getTelegramGroups = async () => {
-  const telegramGroups = await client.getTableByName(airtable_telegram_groups_token);
-  const mapedTelegramGroups = telegramGroups.map((item) => mapTelegramGroups(item.fields));
-
-  return mapedTelegramGroups;
+  try {
+    const telegramGroups = await client.getTableByName(
+      airtable_telegram_groups_token
+    );
+    const mapedTelegramGroups = telegramGroups.map((item) =>
+      mapTelegramGroups(item.fields)
+    );
+    return mapedTelegramGroups;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 function mapTelegramGroups(group) {

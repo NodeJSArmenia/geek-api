@@ -5,15 +5,19 @@ import { getImage, getGeekWebsites } from "../../lib/airtable.js";
 const { airtable_geeks_token } = config.airtableConfig;
 
 const getGeeks = async () => {
-  const geeks = await client.getTableByName(airtable_geeks_token);
-  const mapedGeeks = await Promise.all(
-    geeks.map(async (item) => {
-      const { Websites } = item.fields;
-      const website = await getGeekWebsites(Websites);
-      return mapGeeks(item.fields, website);
-    })
-  );
-  return mapedGeeks;
+  try {
+    const geeks = await client.getTableByName(airtable_geeks_token);
+    const mapedGeeks = await Promise.all(
+      geeks.map(async (item) => {
+        const { Websites } = item.fields;
+        const website = await getGeekWebsites(Websites);
+        return mapGeeks(item.fields, website);
+      })
+    );
+    return mapedGeeks;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 function mapGeeks(geek, website) {

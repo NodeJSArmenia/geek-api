@@ -1,7 +1,11 @@
 import store from "../store/store.js";
 
 const getTelegramGroups = (req, res) => {
-  res.json(store.getState().telegramGroups);
+  try {
+    res.json(store.getState().telegramGroups);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default {
