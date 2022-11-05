@@ -1,7 +1,11 @@
 import store from "../store/store.js";
 
 const getBooks = (req, res) => {
-  res.json(store.getState().books);
+  try {
+    res.json(store.getState().books);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default {

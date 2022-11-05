@@ -1,7 +1,11 @@
 import store from "../store/store.js";
 
 const getBlogs = (req, res) => {
-  res.json(store.getState().blogs);
+  try {
+    res.json(store.getState().blogs);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default {
