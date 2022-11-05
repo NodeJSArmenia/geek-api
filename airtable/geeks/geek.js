@@ -7,11 +7,13 @@ const { airtable_geeks_token } = config.airtableConfig;
 const getGeeks = async () => {
   const geeks = await client.getTableByName(airtable_geeks_token);
   const mapedGeeks = await Promise.all(
-    geeks.map(async (item) => {
-      const { Websites } = item.fields;
-      const website = await getGeekWebsites(Websites);
-      return mapGeeks(item.fields, website);
-    })
+    geeks
+      .sort((a, b) => a.position - b.position)
+      .map(async (item) => {
+        const { Websites } = item.fields;
+        const website = await getGeekWebsites(Websites);
+        return mapGeeks(item.fields, website);
+      })
   );
   return mapedGeeks;
 };
