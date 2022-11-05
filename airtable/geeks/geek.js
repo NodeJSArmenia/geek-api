@@ -9,7 +9,7 @@ const getGeeks = async () => {
     const geeks = await client.getTableByName(airtable_geeks_token);
     const mapedGeeks = await Promise.all(
       geeks
-        .sort((a, b) => a.position - b.position)
+        .sort((a, b) => a.fields.position - b.fields.position)
         .map(async (item) => {
           const { Websites } = item.fields;
           const website = await getGeekWebsites(Websites);
