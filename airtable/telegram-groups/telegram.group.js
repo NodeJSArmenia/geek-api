@@ -9,9 +9,11 @@ const getTelegramGroups = async () => {
     const telegramGroups = await client.getTableByName(
       airtable_telegram_groups_token
     );
-    const mapedTelegramGroups = telegramGroups.map((item) =>
-      mapTelegramGroups(item.fields)
-    );
+    const mapedTelegramGroups = telegramGroups
+      .sort((a, b) => a.fields.position - b.fields.position)
+      .map((item) =>
+        mapTelegramGroups(item.fields)
+      );
     return mapedTelegramGroups;
   } catch (err) {
     console.log(err);
