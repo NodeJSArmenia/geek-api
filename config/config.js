@@ -21,7 +21,7 @@ export default {
   },
   appConfig: {
     port: process.env.GEEKS_PORT || 4000,
-    syncInterval: 10000,
+    syncInterval: 1000000000000000000000000000000000,
     syncIntervalCount: 3,
     origin: process.env.ORIGIN,
   },
