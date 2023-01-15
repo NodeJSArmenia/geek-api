@@ -20,9 +20,9 @@ export default {
     airtable_blogs_token: process.env.AIRTABLE_BLOGS_TOKEN,
   },
   appConfig: {
-    port: process.env.GEEKS_PORT || 4000,
+    port: process.env.PORT || 4000,
     syncInterval: 10000,
     syncIntervalCount: 3,
-    origin: process.env.ORIGIN,
+    origin: process.env.CLIENT_URL,
   },
 };
